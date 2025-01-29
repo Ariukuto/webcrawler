@@ -40,5 +40,5 @@ export function main()
 
 	const myWebCrawler = new MyWebCrawler(transporter, email, url);
 
-	cron.schedule('* * * * * * ', () => myWebCrawler.search());
+	cron.schedule('0 * * * * ', () => myWebCrawler.search());
 };
