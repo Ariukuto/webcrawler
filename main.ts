@@ -3,8 +3,6 @@ import nodemailer from "nodemailer";
 import { MyWebCrawler } from './myWebCrawler';
 import PromptSync from 'prompt-sync';
 
-
-
 export function main()
 {
 	console.clear();
@@ -38,7 +36,14 @@ export function main()
 
 	console.log("\n");
 
-	const myWebCrawler = new MyWebCrawler(transporter, email, url);
+	const myWebCrawler = new MyWebCrawler(transporter, email, url);	
 
-	cron.schedule('0 * * * * ', () => myWebCrawler.search());
+	setInterval(() => {
+		const random = 60 * (Math.floor(Math.random() * 30)) * 1000;
+		console.log(`Waiting ${(random / 1000 / 60) + (60 * 30 * 1000 / 60 / 1000)} minutes for the next request`);
+		setTimeout(() => {
+			myWebCrawler.search();
+		}, random);
+	}, 60 * 30 * 1000);
+
 };
