@@ -17,7 +17,7 @@ export class MyWebCrawler
 		this.search();
 	}
 
-	public async search() 
+	public async search()
 	{
 		console.log("start searching ...");
 
